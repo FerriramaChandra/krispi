@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #ebf2fd;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+}
+
+/* .table {
+  @apply w-full
+} */
+/* table > thead {
+  @apply bg-gray-100 border-b-2 border-gray-200
+}
+table > thead > tr > th {
+  @apply p-3 text-sm font-semibold tracking-wide whitespace-nowrap
+}
+table > tbody {
+  @apply divide-y divide-gray-100
+}
+table > tbody > tr > td {
+  @apply p-3 text-center text-sm text-gray-700 whitespace-nowrap
+} */
+
+.active {
+  @apply bg-primary text-white;
+}
+
+.content {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+thead > tr > .ant-table-cell{
+  background-color: #E8E8E8 !important;
+}
+
+/* START: LOGIN PAGE */
+.login {
+  @apply min-h-screen flex justify-center items-center px-8 py-12;
+}
+
+.login-container {
+  @apply max-w-[25rem];
+}
+
+.login-header {
+  @apply border-b-2 border-primary flex flex-col items-center gap-8 py-8;
+}
+
+.login-header_title {
+  @apply font-medium text-2xl text-center;
+}
+
+.login-header_img {
+  @apply w-[180px]; 
+}
+
+.login-form {
+  @apply p-6 flex flex-col;
+}
+
+.login-form_title {
+  @apply mb-4 text-lg font-semibold;
+}
+
+/* END: LOGIN PAGE */
+
+/* START: PROFIL DINAS */
+.profil-dinas {
+  @apply flex items-start justify-between my-6 flex-wrap w-full gap-6;
+}
+.data-dinas, .logo-dinas {
+  @apply py-10 px-8 bg-white rounded-lg shadow-md shadow-gray-300;
+}
+.data-dinas {
+  @apply flex-1 w-full md:w-6/12 lg:w-7/12
+}
+
+.logo-dinas {
+  @apply w-full md:w-4/12 lg:w-4/12 xl:w-3/12 flex flex-col gap-5 items-center
+}
+
+.section-title {
+  @apply text-lg font-semibold
+}
+/* END: PROFIL DINAS */
+
+/* START: REKAP ABSENSI */
+.laporan {
+  @apply px-10 py-8 my-6 bg-white rounded-lg shadow-md shadow-gray-300 inline-block w-full
+}
+/* END: REKAP ABSENSI */
+
+/* START: DATA JABATAN */
+.jabatan {
+  @apply p-6 my-6 bg-white rounded-lg shadow-md shadow-gray-300 md:px-10 md:py-8
+}
+.tambah-jabatan {
+  @apply px-10 py-8 mt-6 bg-white rounded-lg shadow-md shadow-gray-300 w-full md:w-[800px]
+}
+/* END: DATA JABATAN */
+
+/* START: DATA PEGAWAI */
+.pegawai {
+  @apply p-6 my-6 bg-white rounded-lg shadow-md shadow-gray-300 md:px-10 md:py-8
+}
+.tambah-pegawai {
+  @apply px-10 py-8 mt-6 bg-white rounded-lg shadow-md shadow-gray-300 w-full
+}
+/* END: DATA PEGAWAI */
+
+/* START: DATA KEHADIRAN */
+.kehadiran {
+  @apply p-6 my-6 bg-white rounded-lg shadow-md shadow-gray-300 md:px-10 md:py-8
+}
+.tambah-kehadiran {
+  @apply px-10 py-8 mt-6 bg-white rounded-lg shadow-md shadow-gray-300 w-full
+}
+/* END: DATA KEHADIRAN */
+
+/* START: USER MANAGEMENT */
+.user {
+  @apply p-6 my-6 bg-white rounded-lg shadow-md shadow-gray-300 md:px-10 md:py-8
+}
+.tambah-user {
+  @apply px-10 py-8 mt-6 bg-white rounded-lg shadow-md shadow-gray-300 w-full md:w-[800px]
+}
+/* END: USER MANAGEMENT */
+
+/* START: PROFILE USER */
+.profil-user {
+  @apply flex items-start justify-between my-6 flex-wrap w-full gap-6;
+}
+.data-user {
+  @apply flex-1 w-full md:w-6/12 lg:w-7/12 pt-4 pb-8 px-8 bg-white rounded-lg shadow-md shadow-gray-300
+}
+.card-user {
+  @apply w-full md:w-4/12 lg:w-4/12 xl:w-4/12 text-center py-10 px-8 bg-white rounded-lg shadow-md shadow-gray-300
+}
+
+/* END: PROFILE USER */

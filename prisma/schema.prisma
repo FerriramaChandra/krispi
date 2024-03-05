@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  email     String     @unique
+  name      String
+  password  String
+  foto      String?
+  status    StatusUser @default(Aktif)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Profile {
+  id             Int    @id @default(autoincrement())
+  nama_institusi String
+  telepon        String
+  email          String
+  alamat         String
+  latitude       String
+  longitude      String
+  logo           String
+}
+
+model Jabatan {
+  id           Int       @id @default(autoincrement())
+  kode_jabatan String    @unique
+  nama_jabatan String    @unique
+  keterangan   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  Pegawai      Pegawai[]
+}
+
+model Pegawai {
+  id            Int          @id @default(autoincrement())
+  nip           String       @unique
+  nama          String
+  telepon       String
+  alamat        String?
+  pangkat       String
+  tempat_lahir  String
+  tanggal_lahir String
+  jenis_kelamin JenisKelamin
+  kontur_wajah  String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  jabatan       Jabatan      @relation(fields: [jabatanId], references: [id])
+  jabatanId     Int
+  Presensi      Presensi[]
+}
+
+model Presensi {
+  id         Int       @id @default(autoincrement())
+  tanggal    String
+  jam_masuk  String
+  jam_keluar String?
+  status     String
+  kehadiran  String?
+  keterangan String?
+  pegawai    Pegawai   @relation(fields: [pegawaiId], references: [id])
+  pegawaiId  Int
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime?     @updatedAt
+}
+
+model Avatar {
+  id  Int @id @default(autoincrement())
+  url String
+}
+
+enum StatusUser {
+  Aktif
+  Nonaktif
+}
+
+enum JenisKelamin {
+  L
+  P
+}

@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Pegawai" ALTER COLUMN "tanggal_lahir" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "Presensi" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "updatedAt" TIMESTAMP(3);

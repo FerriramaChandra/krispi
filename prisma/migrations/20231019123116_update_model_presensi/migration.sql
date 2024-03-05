@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Presensi" ADD COLUMN     "kehadiran" TEXT,
+ALTER COLUMN "tanggal" SET DATA TYPE TIMESTAMP(3),
+ALTER COLUMN "jam_masuk" DROP DEFAULT,
+ALTER COLUMN "jam_masuk" SET DATA TYPE TEXT,
+ALTER COLUMN "jam_keluar" SET DATA TYPE TEXT;

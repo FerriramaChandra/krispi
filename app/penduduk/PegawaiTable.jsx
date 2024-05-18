@@ -12,7 +12,7 @@ import ViewPegawai from './ViewPegawai';
 
 const { Search } = Input;
 
-const PegawaiTable = ({ allPegawai, allJabatan }) => {
+const PegawaiTable = ({ allPenduduk, allJabatan }) => {
   const [openModalAdd, setOpenModalAdd] = useState(false);
   const [entryData, setEntryData] = useState("10");
 
@@ -22,23 +22,23 @@ const PegawaiTable = ({ allPegawai, allJabatan }) => {
 
   const onSearch = (value) => console.log(value);
 
-  const dataSource = allPegawai.map((pegawai, i) => ({
+  const dataSource = allPenduduk.map((penduduk, i) => ({
     key: i,
     no: `${i + 1}`,
-    id: pegawai.id,
-    nama: pegawai.nama,
-    nip: pegawai.nip,
-    telepon: pegawai.telepon,
-    jenis_kelamin: pegawai.jenis_kelamin,
-    jabatan: pegawai.jabatan.nama_jabatan,
-    jabatanId: pegawai.jabatan.id,
-    pangkat: pegawai.pangkat,
-    tanggal_lahir: pegawai.tanggal_lahir,
-    tempat_lahir: pegawai.tempat_lahir,
-    alamat: pegawai.alamat,
+    id: penduduk.id,
+    nama: penduduk.nama,
+    nip: penduduk.nip,
+    telepon: penduduk.telepon,
+    jenis_kelamin: penduduk.jenis_kelamin,
+    jabatan: penduduk.jabatan.nama_jabatan,
+    jabatanId: penduduk.jabatan.id,
+    pangkat: penduduk.pangkat,
+    tanggal_lahir: penduduk.tanggal_lahir,
+    tempat_lahir: penduduk.tempat_lahir,
+    alamat: penduduk.alamat,
   }))
 
-  const columnsDataPegawai = [
+  const columnsDataPenduduk = [
     {
       title: "No",
       dataIndex: "no",
@@ -85,11 +85,11 @@ const PegawaiTable = ({ allPegawai, allJabatan }) => {
       dataIndex: "aksi",
       key: "aksi",
       width: 100,
-      render: (_ , record) => (
+      render: (_, record) => (
         <div className="flex justify-center items-center gap-2">
-          <ViewPegawai pegawai={record}/>
-          <EditPegawai pegawai={record} jabatan={allJabatan}/>
-          <RiDeleteBin6Line color="#DC3545" size={20} style={{ cursor: "pointer" }} onClick={() => handleDeletePegawai(record.id)}/>
+          <ViewPegawai pegawai={record} />
+          <EditPegawai pegawai={record} jabatan={allJabatan} />
+          <RiDeleteBin6Line color="#DC3545" size={20} style={{ cursor: "pointer" }} onClick={() => handleDeletePegawai(record.id)} />
         </div>
       ),
     },
@@ -123,21 +123,21 @@ const PegawaiTable = ({ allPegawai, allJabatan }) => {
   return (
     <div className="pegawai">
       <div className='flex justify-between items-center flex-wrap gap-4'>
-        <h1 className="section-title">Daftar Pegawai</h1>
-        <Button icon={<PlusOutlined />} type='primary' size='large' onClick={() => setOpenModalAdd(true)}>Tambah Pegawai</Button>
+        <h1 className="section-title">Daftar Penduduk</h1>
+        <Button icon={<PlusOutlined />} type='primary' size='large' onClick={() => setOpenModalAdd(true)}>Tambah Penduduk</Button>
       </div>
       <div className='flex flex-wrap gap-4 justify-between items-center my-10'>
-        <div>Show 
-        <Select
-          defaultValue="10"
-          style={{
-            width: 60,
-            margin: "0 10px"
-          }}
-          onChange={handleChange}
-          options={showEntriesOption}
-        />
-          Entries  
+        <div>Show
+          <Select
+            defaultValue="10"
+            style={{
+              width: 60,
+              margin: "0 10px"
+            }}
+            onChange={handleChange}
+            options={showEntriesOption}
+          />
+          Entries
         </div>
         <Search
           placeholder="Cari Pegawai"
@@ -145,25 +145,25 @@ const PegawaiTable = ({ allPegawai, allJabatan }) => {
           enterButton
           size="large"
           onSearch={onSearch}
-          style={{width: "280px"}}
+          style={{ width: "280px" }}
         />
       </div>
       <Table
-        columns={columnsDataPegawai}
+        columns={columnsDataPenduduk}
         dataSource={dataSource}
         bordered
         pagination={{
           pageSize: entryData
         }}
-        // scroll={{
-        //   x: 900,
-        // }}
-        // tableLayout='auto'
-        // scroll={{x: "100vw"}}
-        // style={{width: "100%  "}}
+      // scroll={{
+      //   x: 900,
+      // }}
+      // tableLayout='auto'
+      // scroll={{x: "100vw"}}
+      // style={{width: "100%  "}}
       />
-      
-      <ModalAddPegawai open={openModalAdd} setOpen={setOpenModalAdd}/>
+
+      <ModalAddPegawai open={openModalAdd} setOpen={setOpenModalAdd} />
     </div>
   )
 }

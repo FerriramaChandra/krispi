@@ -26,7 +26,6 @@ const CameraPresensi = ({ allPegawai, allKehadiran }) => {
 
 
   const loadModels = async () => {
-    await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
     await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
     await faceapi.nets.mtcnn.loadFromUri('/models');
     await faceapi.nets.faceExpressionNet.loadFromUri('/models');

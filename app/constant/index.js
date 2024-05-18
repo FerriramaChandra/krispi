@@ -4,8 +4,7 @@ import { FaUser, FaUsers } from "react-icons/fa";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { BsFillFileEarmarkTextFill } from "react-icons/bs";
 import { HiBuildingOffice2 } from "react-icons/hi2";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+
 
 export const sidebarMenus = [
   {
@@ -14,25 +13,20 @@ export const sidebarMenus = [
     icon: BiSolidDashboard,
   },
   {
-    name: "Data Jabatan",
-    link: "/jabatan",
-    icon: PiToolboxFill,
-  },
-  {
     name: "Data Penduduk",
-    link: "/pegawai",
+    link: "/penduduk",
     icon: FaUser,
   },
-  {
-    name: "Data Kehadiran",
-    link: "/kehadiran",
-    icon: BsFillFileEarmarkTextFill,
-  },
-  {
-    name: "Rekap Absensi",
-    link: "/laporan",
-    icon: AiFillFolderOpen,
-  },
+  // {
+  //   name: "Data Kehadiran",
+  //   link: "/kehadiran",
+  //   icon: BsFillFileEarmarkTextFill,
+  // },
+  // {
+  //   name: "Rekap Absensi",
+  //   link: "/laporan",
+  //   icon: AiFillFolderOpen,
+  // },
   {
     name: "Manajemen Pengguna",
     link: "/user",
@@ -114,6 +108,78 @@ export const dataPangkat = [
   {
     value: 'Juru Muda - I/a',
     label: 'Juru Muda - I/a',
+  },
+]
+
+export const dataAgama = [
+  {
+    value: '-- Pilih Agama --"',
+    label: '-- Pilih Agama --"',
+    disabled: true,
+  },
+  {
+    value: 'Islam',
+    label: 'Islam',
+  },
+  {
+    value: 'Kristen',
+    label: 'Kristen',
+  },
+  {
+    value: 'Katolik',
+    label: 'Katolik',
+  },
+  {
+    value: 'Hindu',
+    label: 'Hindu',
+  },
+  {
+    value: 'Buddha',
+    label: 'Buddha',
+  },
+  {
+    value: 'Khonghucu',
+    label: 'Khonghucu',
+  },
+]
+
+export const statusPerkawinan = [
+  {
+    value: '-- Pilih Status --"',
+    label: '-- Pilih Status --"',
+    disabled: true,
+  },
+  {
+    value: 'Belum kawin',
+    label: 'Belum kawin',
+  },
+  {
+    value: 'Kawin',
+    label: 'Kawin',
+  },
+  {
+    value: 'Cerai hidup',
+    label: 'Cerai hidup',
+  },
+  {
+    value: 'Cerai mati',
+    label: 'Cerai mati',
+  },
+]
+
+export const dataWargaNegara = [
+  {
+    value: '-- Pilih Warga negara --"',
+    label: '-- Pilih Warga negara --"',
+    disabled: true,
+  },
+  {
+    value: 'WNI',
+    label: 'WNI',
+  },
+  {
+    value: 'WNA',
+    label: 'WNA',
   },
 ]
 

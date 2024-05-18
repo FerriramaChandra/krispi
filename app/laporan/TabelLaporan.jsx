@@ -5,12 +5,12 @@ import dayjs from 'dayjs';
 import React from 'react';
 import * as XLSX from 'xlsx';
 
-const TabelLaporan = ({allKehadiran, pegawai, startDate, endDate}) => {
+const TabelLaporan = ({ allKehadiran, pegawai, startDate, endDate }) => {
   const [messageApi, contextHolder] = message.useMessage();
 
-  const filteredDatas = allKehadiran.filter( (kehadiran) => kehadiran.pegawai.nama == pegawai && 
-  dayjs(kehadiran.tanggal, 'DD/MM/YYYY').isAfter(dayjs(startDate, 'DD/MM/YYYY'), 'day') &&
-  dayjs(kehadiran.tanggal, 'DD/MM/YYYY').isBefore(dayjs(endDate, 'DD/MM/YYYY'), 'day')
+  const filteredDatas = allKehadiran.filter((kehadiran) => kehadiran.pegawai.nama == pegawai &&
+    dayjs(kehadiran.tanggal, 'DD/MM/YYYY').isAfter(dayjs(startDate, 'DD/MM/YYYY'), 'day') &&
+    dayjs(kehadiran.tanggal, 'DD/MM/YYYY').isBefore(dayjs(endDate, 'DD/MM/YYYY'), 'day')
   )
 
   const dataSource = filteredDatas.map((kehadiran, i) => ({
@@ -58,7 +58,7 @@ const TabelLaporan = ({allKehadiran, pegawai, startDate, endDate}) => {
       render: (_, record) => (
         record.status == "Masuk" ? (
           <Badge status="success" text={record.status} />
-          ) : (
+        ) : (
           <Badge status="error" text={record.status} />
         )
       ),
@@ -82,7 +82,7 @@ const TabelLaporan = ({allKehadiran, pegawai, startDate, endDate}) => {
 
   const handleOnExport = () => {
     console.log(dataSource);
-    if(dataSource.length == 0) {
+    if (dataSource.length == 0) {
       error();
     } else {
       let wb = XLSX.utils.book_new();
@@ -114,13 +114,13 @@ const TabelLaporan = ({allKehadiran, pegawai, startDate, endDate}) => {
         columns={columnsDataKehadiran}
         dataSource={dataSource}
         bordered
-        footer={() => <Button icon={<DownloadOutlined />} type='primary' size='large' onClick={() => handleOnExport()}>Ekspor xls</Button>}
-        // scroll={{
-          //   x: 900,
-          // }}
-        // tableLayout='auto'
-        // scroll={{x: "100vw"}}
-        // style={{width: "100%  "}}
+      // footer={() => <Button icon={<DownloadOutlined />} type='primary' size='large' onClick={() => handleOnExport()}>Ekspor xls</Button>}
+      // scroll={{
+      //   x: 900,
+      // }}
+      // tableLayout='auto'
+      // scroll={{x: "100vw"}}
+      // style={{width: "100%  "}}
       />
     </>
   )

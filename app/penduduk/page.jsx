@@ -4,7 +4,7 @@ import PegawaiTable from './PegawaiTable';
 import { db } from '../lib/db';
 import Loading from './loading';
 
-const getPegawai = async () => {
+const getPenduduk = async () => {
   const res = await db.pegawai.findMany({
     include: {
       jabatan: {
@@ -15,7 +15,7 @@ const getPegawai = async () => {
       }
     }
   })
- return res;
+  return res;
 }
 
 const getAllJabatan = async () => {
@@ -29,16 +29,16 @@ const getAllJabatan = async () => {
   return res;
 }
 
-const Pegawai = async () => {
-  const allPegawai = await getPegawai();
+const Penduduk = async () => {
+  const allPenduduk = await getPenduduk();
   const allJabatan = await getAllJabatan();
 
   return (
     <Suspense fallback={<Loading />}>
       <section id='pegawai'>
-        <TitleBar title={"Data Pegawai"}/>
-        <PegawaiTable 
-          allPegawai={allPegawai}
+        <TitleBar title={"Data Penduduk"} />
+        <PegawaiTable
+          allPenduduk={allPenduduk}
           allJabatan={allJabatan}
         />
       </section>
@@ -46,4 +46,4 @@ const Pegawai = async () => {
   )
 }
 
-export default Pegawai
+export default Penduduk

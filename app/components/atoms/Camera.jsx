@@ -1,14 +1,16 @@
 'use client';
+import uploadToCloudinary, { uploadImageHandler } from '@/app/lib/uploadImage';
 import { Button, message } from 'antd';
+import { useRouter } from 'next/navigation';
 import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam';
 
-const Camera = ({ nama }) => {
+const Camera = ({ nama, idPenduduk }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [namaPegawai, setNamaPegawai] = useState(nama);
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [webcamEnabled, setWebcamEnabled] = useState(true)
+  const router = useRouter();
 
   const success = () => {
     messageApi.open({
@@ -36,7 +38,6 @@ const Camera = ({ nama }) => {
   };
 
   console.log(imgSrc);
-  console.log(webcamEnabled);
 
   const stop = () => {
     let stream = Webcam.video.srcObject;
@@ -48,28 +49,32 @@ const Camera = ({ nama }) => {
 
   const uploadPhoto = async () => {
     if (imgSrc) {
-      // Convert base64 image data to a blob
-      // const blob = await fetch(imgSrc).then((res) => res.blob());
 
-      // console.log(blob);
+      const image = await uploadToCloudinary(imgSrc)
 
-      // Create a FormData object and append the blob
-      const formData = new FormData();
-      formData.append('photo', imgSrc);
-      formData.append('name', namaPegawai)
+      console.log(image.secure_url)
 
-      // Use fetch to send the FormData to your API endpoint
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      console.log("response", response);
-      if (response.ok) {
-        success();
-      } else {
-        error();
+      try {
+        const response = await fetch(`api/penduduk/${idPenduduk}`, {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            foto: image.secure_url
+          })
+        })
+
+        if (response.ok) {
+          success();
+          router.refresh()
+        } else {
+          error();
+        }
+      } catch (error) {
+        console.log(error)
       }
-      // Optionally, you can reset the image source after uploading
+
       setImgSrc(null);
     }
   };

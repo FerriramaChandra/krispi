@@ -33,7 +33,8 @@ export const PATCH = async (req, { params }) => {
       rt_rw,
       status_perkawinan,
       tempat_lahir,
-      tanggal_lahir
+      tanggal_lahir,
+      foto
     } = body
     const penduduk = await db.penduduk.update({
       where: {
@@ -54,7 +55,8 @@ export const PATCH = async (req, { params }) => {
         rt_rw,
         status_perkawinan,
         tempat_lahir,
-        tanggal_lahir
+        tanggal_lahir,
+        foto
       }
     })
     return NextResponse.json(penduduk, { status: 200 });

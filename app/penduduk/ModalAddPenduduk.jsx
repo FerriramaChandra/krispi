@@ -14,6 +14,7 @@ const ModalAddPegawai = ({ open, setOpen }) => {
   const [current, setCurrent] = useState(0);
   const router = useRouter()
   const [namaPegawai, setNamaPegawai] = useState("");
+  const [idPenduduk, setIdPenduduk] = useState("");
   const [pekerjaanBaru, setPekerjaanBaru] = useState("");
   const [pekerjaan, setPekerjaan] = useState(dataPekerjaan)
 
@@ -136,6 +137,9 @@ const ModalAddPegawai = ({ open, setOpen }) => {
           tanggal_lahir: tanggalLahir
         }),
       });
+      const body = await response.json();
+      setIdPenduduk(body.newPenduduk.id);
+
       if (response.ok) {
         await Swal.fire("Success", "Data Penduduk Berhasil Ditambahkan!", "success");
         router.refresh();
@@ -165,12 +169,17 @@ const ModalAddPegawai = ({ open, setOpen }) => {
   const filterOption = (input, option) =>
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
+  const handleCancel = () => {
+    setOpen(false);
+    prev();
+  };
+
   return (
     <Modal
       centered
       styles={{ padding: "50px" }}
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={handleCancel}
       width={1000}
       footer={null}
     >
@@ -438,9 +447,8 @@ const ModalAddPegawai = ({ open, setOpen }) => {
           <div className='max-w-[500px] m-auto p-8'>
             <h2 className='font-semibold text-xl text-center'>Pratinjau Kamera</h2>
             {/* <div className='max-w-[480px] h-[300px] border m-auto my-12'> */}
-            <Camera nama={namaPegawai} />
+            <Camera nama={namaPegawai} idPenduduk={idPenduduk} />
             {/* </div> */}
-
           </div>
         )
       }

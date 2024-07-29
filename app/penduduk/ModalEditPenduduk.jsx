@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 
 const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
   console.log(penduduk)
+  const [idPenduduk, setIdPenduduk] = useState(penduduk.id);
   const inputRef = useRef(null);
   const [jenisKelamin, setJenisKelamin] = useState("");
   const [tanggalLahir, setTanggalLahir] = useState("");
@@ -138,7 +139,7 @@ const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
       });
       if (response.ok) {
         await Swal.fire("Success", "Data Penduduk Berhasil Diupdate!", "success");
-        router.refresh();
+        // router.refresh();
         next();
       } else {
         console.log(response)
@@ -164,12 +165,17 @@ const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
   const filterOption = (input, option) =>
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
+  const handleCancel = () => {
+    setOpen(false);
+    prev();
+  };
+
   return (
     <Modal
       centered
       styles={{ padding: "50px" }}
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={handleCancel}
       width={1000}
       footer={null}
     >
@@ -452,7 +458,7 @@ const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
           <div className='max-w-[500px] m-auto p-8'>
             <h2 className='font-semibold text-xl text-center'>Pratinjau Kamera</h2>
             {/* <div className='max-w-[480px] h-[300px] border m-auto my-12'> */}
-            <Camera nama={pegawai.nama} />
+            <Camera nama={pegawai.nama} idPenduduk={idPenduduk} />
             {/* </div> */}
 
           </div>

@@ -1,10 +1,9 @@
 'use client';
 import { Form, Input, Modal } from 'antd'
-import dayjs from 'dayjs';
 import React from 'react'
 const { TextArea } = Input;
 
-const PendudukModal = ({ open, setOpen, pegawai }) => {
+const PendudukModal = ({ open, setOpen, penduduk }) => {
   const styles = {
     inputStyle: {
       fontWeight: "500",
@@ -21,7 +20,7 @@ const PendudukModal = ({ open, setOpen, pegawai }) => {
 
   return (
     <Modal
-      title="Detail Pegawai"
+      title="Detail Penduduk"
       centered
       open={open}
       onOk={() => setOpen(false)}
@@ -33,15 +32,15 @@ const PendudukModal = ({ open, setOpen, pegawai }) => {
         labelCol={{ span: 6 }}
         labelWrap
         initialValues={{
-          nama: pegawai.nama,
-          nip: pegawai.nip,
-          telepon: pegawai.telepon,
-          tempat_lahir: pegawai.tempat_lahir,
-          tanggal_lahir: pegawai.tanggal_lahir,
-          pangkat: pegawai.pangkat,
-          jabatan: pegawai.jabatan,
-          jenis_kelamin: pegawai.jenis_kelamin == "L" ? "Laki-laki" : "Perempuan",
-          alamat: pegawai.alamat,
+          nama: penduduk.nama,
+          nip: penduduk.nip,
+          telepon: penduduk.telepon,
+          tempat_lahir: penduduk.tempat_lahir,
+          tanggal_lahir: penduduk.tanggal_lahir,
+          pangkat: penduduk.pangkat,
+          jabatan: penduduk.jabatan,
+          jenis_kelamin: penduduk.jenis_kelamin == "L" ? "Laki-laki" : "Perempuan",
+          alamat: penduduk.alamat,
         }}
         labelAlign='left'
         size='large'
@@ -126,6 +125,9 @@ const PendudukModal = ({ open, setOpen, pegawai }) => {
             >
               <Input style={styles.inputStyle} />
             </Form.Item>
+
+            <img alt='image' src={penduduk.foto} width={300} height={200} />
+            <p>Id : {penduduk.id}</p>
           </div>
         </div>
       </Form>

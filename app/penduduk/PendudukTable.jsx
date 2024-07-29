@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import ModalAddPegawai from './ModalAddPenduduk';
 import EditPenduduk from './EditPenduduk';
-import ViewPegawai from './ViewPenduduk';
+import ViewPenduduk from './ViewPenduduk';
 
 const { Search } = Input;
 
@@ -39,7 +39,8 @@ const PendudukTable = ({ allPenduduk }) => {
     kecamatan: penduduk.kecamatan,
     rt_rw: penduduk.rt_rw,
     kel: penduduk.kelurahan_desa,
-    golDarah: penduduk.golongan_darah
+    golDarah: penduduk.golongan_darah,
+    foto: penduduk.foto,
   }))
 
   const columnsDataPenduduk = [
@@ -91,7 +92,7 @@ const PendudukTable = ({ allPenduduk }) => {
       width: 100,
       render: (_, record) => (
         <div className="flex justify-center items-center gap-2">
-          <ViewPegawai pegawai={record} />
+          <ViewPenduduk penduduk={record} />
           <EditPenduduk penduduk={record} />
           <RiDeleteBin6Line color="#DC3545" size={20} style={{ cursor: "pointer" }} onClick={() => handleDeletePenduduk(record.id)} />
         </div>

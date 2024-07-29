@@ -6,34 +6,22 @@ import { db } from "../lib/db";
 import { FaFileInvoice, FaUserTie } from "react-icons/fa";
 import { PiToolboxFill } from "react-icons/pi";
 
-const getJabatan = async () => {
-  const res = await db.jabatan.findMany()
-
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-  return res;
-
-}
-const getPegawai = async () => {
-  const res = await db.pegawai.findMany();
-  return res;
-}
-const getKehadiran = async () => {
-  const res = await db.presensi.findMany();
+const getPenduduk = async () => {
+  const res = await db.penduduk.findMany();
+  console.log(res);
   return res;
 }
 
 const Dashboard = async () => {
-  const jabatan = await getJabatan();
-  const pegawai = await getPegawai();
-  const kehadiran = await getKehadiran();
+  const penduduk = await getPenduduk();
 
   return (
     <section id="dashboard">
       <TitleBar title={"Dashboard"} />
       <div className="flex items-center justify-between my-6 gap-4 flex-wrap w-full">
-        <DashboardInfo title={"Total Pegawai"} value={pegawai.length} icon={<FaUserTie size={50} />} />
-        <DashboardInfo title={"Total Jabatan"} value={jabatan.length} icon={<PiToolboxFill size={60} />} />
-        <DashboardInfo title={"Total Kehadiran"} value={kehadiran.length} icon={<FaFileInvoice size={50} />} />
+        <DashboardInfo title={"Total Pegawai"} value={penduduk.length} icon={<FaUserTie size={50} />} />
+        <DashboardInfo title={"Total Jabatan"} value={2} icon={<PiToolboxFill size={60} />} />
+        <DashboardInfo title={"Total Kehadiran"} value={3} icon={<FaFileInvoice size={50} />} />
       </div>
       <div className="bg-[#F9F9F9] p-8 text-center rounded-lg shadow-md shadow-gray-300">
         <div className="my-10">

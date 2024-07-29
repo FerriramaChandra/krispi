@@ -6,13 +6,13 @@ import { showEntriesOption } from "../constant/index"
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
-import ModalAddPegawai from './ModalAddPegawai';
-import EditPegawai from './EditPegawai';
-import ViewPegawai from './ViewPegawai';
+import ModalAddPegawai from './ModalAddPenduduk';
+import EditPenduduk from './EditPenduduk';
+import ViewPegawai from './ViewPenduduk';
 
 const { Search } = Input;
 
-const PegawaiTable = ({ allPenduduk, allJabatan }) => {
+const PendudukTable = ({ allPenduduk }) => {
   const [openModalAdd, setOpenModalAdd] = useState(false);
   const [entryData, setEntryData] = useState("10");
 
@@ -27,15 +27,19 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
     no: `${i + 1}`,
     id: penduduk.id,
     nama: penduduk.nama,
-    nip: penduduk.nip,
-    telepon: penduduk.telepon,
-    jenis_kelamin: penduduk.jenis_kelamin,
-    jabatan: penduduk.jabatan.nama_jabatan,
-    jabatanId: penduduk.jabatan.id,
-    pangkat: penduduk.pangkat,
-    tanggal_lahir: penduduk.tanggal_lahir,
+    nik: penduduk.nik,
+    agama: penduduk.agama,
     tempat_lahir: penduduk.tempat_lahir,
+    tanggal_lahir: penduduk.tanggal_lahir,
+    jenis_kelamin: penduduk.jenis_kelamin,
     alamat: penduduk.alamat,
+    status_perkawinan: penduduk.status_perkawinan,
+    pekerjaan: penduduk.pekerjaan,
+    warga_negara: penduduk.warga_negara,
+    kecamatan: penduduk.kecamatan,
+    rt_rw: penduduk.rt_rw,
+    kel: penduduk.kelurahan_desa,
+    golDarah: penduduk.golongan_darah
   }))
 
   const columnsDataPenduduk = [
@@ -52,20 +56,20 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
       key: "nama",
     },
     {
-      title: "Nomor Induk Pegawai",
-      dataIndex: "nip",
-      width: 250,
-      key: "nip",
+      title: "NIK",
+      dataIndex: "nik",
+      width: 200,
+      key: "nik",
     },
     {
-      title: "Jabatan",
-      dataIndex: "jabatan",
-      key: "jabatan",
+      title: "Tempat Lahir",
+      dataIndex: "tempat_lahir",
+      key: "tempat_lahir",
     },
     {
-      title: "Pangkat",
-      dataIndex: "pangkat",
-      key: "pangkat",
+      title: "Agama",
+      dataIndex: "agama",
+      key: "agama",
       responsive: ["lg"],
     },
     {
@@ -74,9 +78,9 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
       key: "jenis_kelamin",
     },
     {
-      title: "Telepon",
-      dataIndex: "telepon",
-      key: "telepon",
+      title: "Pekerjaan",
+      dataIndex: "pekerjaan",
+      key: "pekerjaan",
       responsive: ["md"],
     },
     {
@@ -88,17 +92,17 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
       render: (_, record) => (
         <div className="flex justify-center items-center gap-2">
           <ViewPegawai pegawai={record} />
-          <EditPegawai pegawai={record} jabatan={allJabatan} />
-          <RiDeleteBin6Line color="#DC3545" size={20} style={{ cursor: "pointer" }} onClick={() => handleDeletePegawai(record.id)} />
+          <EditPenduduk penduduk={record} />
+          <RiDeleteBin6Line color="#DC3545" size={20} style={{ cursor: "pointer" }} onClick={() => handleDeletePenduduk(record.id)} />
         </div>
       ),
     },
   ];
 
-  const handleDeletePegawai = async (idPegawai) => {
+  const handleDeletePenduduk = async (idPenduduk) => {
     await Swal.fire({
       title: 'Apakah anda yakin?',
-      text: 'Ingin Menghapus Data Pegawai?',
+      text: 'Ingin Menghapus Data Penduduk?',
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: 'Hapus',
@@ -107,14 +111,14 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
       cancelButtonColor: 'red',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await fetch(`/api/pegawai/${idPegawai}`, {
+        await fetch(`/api/penduduk/${idPenduduk}`, {
           method: "DELETE",
           cache: 'no-store',
           next: {
             revalidate: 10
           }
         })
-        await Swal.fire("Success", "Data Pegawai Berhasil Dihapus!", "success");
+        await Swal.fire("Success", "Data Penduduk Berhasil Dihapus!", "success");
         router.refresh();
       }
     })
@@ -168,4 +172,4 @@ const PegawaiTable = ({ allPenduduk, allJabatan }) => {
   )
 }
 
-export default PegawaiTable
+export default PendudukTable

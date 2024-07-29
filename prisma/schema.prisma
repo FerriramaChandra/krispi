@@ -33,50 +33,31 @@ model Profile {
   logo           String
 }
 
-model Jabatan {
-  id           Int       @id @default(autoincrement())
-  kode_jabatan String    @unique
-  nama_jabatan String    @unique
-  keterangan   String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  Pegawai      Pegawai[]
-}
-
-model Pegawai {
-  id            Int          @id @default(autoincrement())
-  nip           String       @unique
-  nama          String
-  telepon       String
-  alamat        String?
-  pangkat       String
-  tempat_lahir  String
-  tanggal_lahir String
-  jenis_kelamin JenisKelamin
-  kontur_wajah  String?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  jabatan       Jabatan      @relation(fields: [jabatanId], references: [id])
-  jabatanId     Int
-  Presensi      Presensi[]
-}
-
-model Presensi {
-  id         Int       @id @default(autoincrement())
-  tanggal    String
-  jam_masuk  String
-  jam_keluar String?
-  status     String
-  kehadiran  String?
-  keterangan String?
-  pegawai    Pegawai   @relation(fields: [pegawaiId], references: [id])
-  pegawaiId  Int
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime?     @updatedAt
+model Penduduk {
+  id                Int          @id @default(autoincrement())
+  nik               String       @unique
+  nama              String
+  tempat_lahir      String
+  tanggal_lahir     String
+  jenis_kelamin     JenisKelamin
+  alamat            String?
+  golongan_darah    String
+  kontur_wajah      String?
+  agama             String
+  status_perkawinan String
+  pekerjaan         String
+  warga_negara      String
+  berlaku_hingga    String
+  rt_rw             String
+  kelurahan_desa    String
+  kecamatan         String
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  foto              String?
 }
 
 model Avatar {
-  id  Int @id @default(autoincrement())
+  id  Int    @id @default(autoincrement())
   url String
 }
 

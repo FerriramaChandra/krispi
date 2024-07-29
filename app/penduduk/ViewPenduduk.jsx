@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import PegawaiModal from './PegawaiModal';
+import PendudukModal from './PendudukModal';
 import { RiInformationFill } from 'react-icons/ri';
 
-const ViewPegawai = ({pegawai}) => {
+const ViewPegawai = ({ pegawai }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -10,7 +10,7 @@ const ViewPegawai = ({pegawai}) => {
         setOpen(true);
       }}
       />
-      <PegawaiModal open={open} setOpen={setOpen} pegawai={pegawai}/>
+      <PendudukModal open={open} setOpen={setOpen} pegawai={pegawai} />
     </>
   )
 }

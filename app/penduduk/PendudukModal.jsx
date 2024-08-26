@@ -1,6 +1,7 @@
-'use client';
-import { Form, Input, Modal } from 'antd'
-import React from 'react'
+"use client";
+import { DatePicker, Form, Image, Input, Modal } from "antd";
+import dayjs from "dayjs";
+import React from "react";
 const { TextArea } = Input;
 
 const PendudukModal = ({ open, setOpen, penduduk }) => {
@@ -14,13 +15,12 @@ const PendudukModal = ({ open, setOpen, penduduk }) => {
     formItemStyle: {
       marginBottom: "2.5rem",
       fontWeight: "600",
-
     },
-  }
+  };
 
   return (
     <Modal
-      title="Detail Penduduk"
+      title={`Detail Penduduk ${penduduk.id}`}
       centered
       open={open}
       onOk={() => setOpen(false)}
@@ -28,111 +28,110 @@ const PendudukModal = ({ open, setOpen, penduduk }) => {
       width={1000}
     >
       <Form
-        layout='horizontal'
+        layout="horizontal"
         labelCol={{ span: 6 }}
         labelWrap
         initialValues={{
           nama: penduduk.nama,
-          nip: penduduk.nip,
-          telepon: penduduk.telepon,
-          tempat_lahir: penduduk.tempat_lahir,
-          tanggal_lahir: penduduk.tanggal_lahir,
-          pangkat: penduduk.pangkat,
-          jabatan: penduduk.jabatan,
-          jenis_kelamin: penduduk.jenis_kelamin == "L" ? "Laki-laki" : "Perempuan",
+          nik: penduduk.nik,
+          agama: penduduk.agama,
           alamat: penduduk.alamat,
+          berlaku: penduduk.berlaku,
+          golDarah: penduduk.golDarah,
+          jenis_kelamin: penduduk.jenis_kelamin == "L" ? "Laki-laki" : "Perempuan",
+          kecamatan: penduduk.kecamatan,
+          kel: penduduk.kel,
+          kewarganegaraan: penduduk.warga_negara,
+          pekerjaan: penduduk.pekerjaan,
+          rt_rw: penduduk.rt_rw,
+          status: penduduk.status_perkawinan,
+          tempat_lahir: penduduk.tempat_lahir,
+          tanggal_lahir: dayjs(penduduk.tanggal_lahir, "DD/MM/YYYY"),
+          berlaku: "SEUMUR HIDUP",
         }}
-        labelAlign='left'
-        size='large'
-        style={{ margin: '2rem 0' }}
+        labelAlign="left"
+        size="large"
+        style={{ margin: "2rem 0" }}
         disabled
       >
-        <div className='flex w-full flex-col xl:flex-row'>
-          <div className='flex-1'>
-            <Form.Item
-              label="Nama Lengkap"
-              name="nama"
-              style={styles.formItemStyle}
-            >
+        <div className="flex w-full flex-col xl:flex-row">
+          <div className="flex-1">
+            <Form.Item label="NIK" name="nik" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <Form.Item
-              label="Jabatan"
-              name="jabatan"
-              style={styles.formItemStyle}
-            >
+            <Form.Item label="Nama Lengkap" name="nama" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <Form.Item
-              label="No. HP"
-              name="telepon"
-              style={styles.formItemStyle}
-            >
-              <Input style={styles.inputStyle} />
-            </Form.Item>
-            <Form.Item
-              label="Tempat Lahir"
-              name="tempat_lahir"
-              style={styles.formItemStyle}
-            >
+            <Form.Item label="Tempat Lahir" name="tempat_lahir" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <Form.Item
-              label="Alamat"
-              name="alamat"
-              style={styles.formItemStyle}
-            >
+            <Form.Item label="Tanggal Lahir" name="tanggal_lahir" style={styles.formItemStyle}>
+              <DatePicker style={styles.inputStyle} format="DD/MM/YYYY" />
+            </Form.Item>
+
+            <Form.Item label="Jenis Kelamin" name="jenis_kelamin" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="Alamat" name="alamat" style={styles.formItemStyle}>
               <TextArea
                 style={styles.inputStyle}
                 autoSize={{
-                  minRows: 4,
-                  maxRows: 6,
+                  minRows: 3,
+                  maxRows: 5,
                 }}
               />
             </Form.Item>
+
+            <Form.Item label="Golongan Darah" name="golDarah" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="Agama" name="agama" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
           </div>
-          <div className='flex-1'>
-            <Form.Item
-              label="NIP"
-              name="nip"
-              style={styles.formItemStyle}
-            >
+
+          <div className="flex-1">
+            <Form.Item label="Status Perkawinan" name="status" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <Form.Item
-              label="Pangkat / Gol"
-              name="pangkat"
-              style={styles.formItemStyle}
-            >
+            <Form.Item label="Pekerjaan" name="pekerjaan" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <Form.Item
-              label="Jenis Kelamin"
-              name="jenis_kelamin"
-              style={styles.formItemStyle}
-            >
-              <Input style={styles.inputStyle} />
-            </Form.Item>
-            <Form.Item
-              label="Tanggal Lahir"
-              name="tanggal_lahir"
-              style={styles.formItemStyle}
-            >
+            <Form.Item label="Warna Negara" name="kewarganegaraan" style={styles.formItemStyle}>
               <Input style={styles.inputStyle} />
             </Form.Item>
 
-            <img alt='image' src={penduduk.foto} width={300} height={200} />
-            <p>Id : {penduduk.id}</p>
+            <Form.Item label="Berlaku Hingga" name="berlaku" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="RT/RW" name="rt_rw" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="Kel/Desa" name="kel" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="Kecamatan" name="kecamatan" style={styles.formItemStyle}>
+              <Input style={styles.inputStyle} />
+            </Form.Item>
+
+            <Form.Item label="Foto" name="foto" style={{marginBottom: "0", fontWeight: "600",}}>
+              <Image width={250} src={penduduk.foto} style={{ borderRadius: "8px" }} />
+            </Form.Item>
           </div>
         </div>
       </Form>
     </Modal>
-  )
-}
+  );
+};
 
-export default PendudukModal
+export default PendudukModal;

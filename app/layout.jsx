@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: "#14a7a0",
+                colorPrimary: "#F15b26",
               },
             }}
           >

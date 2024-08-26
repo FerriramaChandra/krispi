@@ -298,6 +298,7 @@ const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
                 <Form.Item
                   label="Gol. Darah"
                   name="golDarah"
+                  style={styles.formItemStyle}
                 >
                   <Select
                     showSearch
@@ -341,9 +342,7 @@ const ModalEditPenduduk = ({ penduduk, open, setOpen }) => {
                   style={styles.formItemStyle}
                 >
                   <Select
-                    style={{
-                      width: 300,
-                    }}
+                    style={styles.inputStyle}
                     placeholder="-- Pilih Pekerjaan --"
                     options={pekerjaan.map((item) => ({
                       label: item,

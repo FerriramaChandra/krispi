@@ -13,7 +13,6 @@ const ModalEditJabatan = ({open, setOpen, jabatan}) => {
       width: "100%",
       border: "1px solid black",
       fontSize: "14px",
-      // padding: "10px"
     },
     formItemStyle: {
       marginBottom: "2.5rem",
@@ -35,7 +34,6 @@ const ModalEditJabatan = ({open, setOpen, jabatan}) => {
         }),
       });
       if (response.ok) {
-        console.log(response);
         await Swal.fire("Success", "Data Jabatan Berhasil Diupdate!", "success");
         router.refresh();
         setOpen(false);
@@ -45,8 +43,6 @@ const ModalEditJabatan = ({open, setOpen, jabatan}) => {
     } catch (error) {
       console.log(error);
     }
-
-    console.log(values);
   };
 
   return (

@@ -24,7 +24,6 @@ const FormEditProfile = ({session}) => {
   };
 
   const onFinish = async (values) => {
-    // console.log(values)
     try {
       const response = await fetch(`/api/user/${session?.user?.id}`, {
         method: "PATCH",

@@ -9,8 +9,6 @@ const getPenduduk = async () => {
   return res;
 }
 
-
-
 const Penduduk = async () => {
   const allPenduduk = await getPenduduk();
 

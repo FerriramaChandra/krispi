@@ -8,7 +8,6 @@ import { PiToolboxFill } from "react-icons/pi";
 
 const getPenduduk = async () => {
   const res = await db.penduduk.findMany();
-  console.log(res);
   return res;
 }
 

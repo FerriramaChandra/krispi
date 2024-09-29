@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useState } from 'react'
+import React, { useState } from 'react'
 import { Select, Input, Table, Button } from "antd"
 import { showEntriesOption } from "../constant/index"
 import { RiDeleteBin6Line } from 'react-icons/ri'
@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
 import ModalAddUser from './ModalAddUser';
 import EditUser from './EditUser';
-import Loading from './loading';
 
 const { Search } = Input;
 

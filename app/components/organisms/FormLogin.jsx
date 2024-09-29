@@ -2,7 +2,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -28,11 +27,11 @@ const FormLogin = () => {
   };
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-center">
       <Form
         name="normal_login"
         autoComplete="on"
-        className=""
+        className="w-[350px]"
         layout="vertical"
         initialValues={{
           remember: false,
@@ -80,26 +79,11 @@ const FormLogin = () => {
             type="primary"
             htmlType="submit"
             className="login-form-button w-full"
-            style={{ color: "#fff", background: "#006400", borderColor: "#006400", height: "3rem" }}>
+          >
             Log in
           </Button>
         </Form.Item>
       </Form>
-      <div className="flex items-center">
-        <Form >
-          <Form.Item>
-            <Link href={"/presensi"}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-                style={{ color: "#FFF", background: "#001f3f", borderColor: "#001f3f", height: "3rem", width: "16rem" }}>
-                Pengenalan Wajah
-              </Button>
-            </Link>
-          </Form.Item>
-        </Form>
-      </div>
     </div>
   );
 };

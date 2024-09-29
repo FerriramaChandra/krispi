@@ -2,13 +2,13 @@
 import React, { useState } from 'react'
 import { Button, Input, Select, Table } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { showEntriesOption } from "../constant/index"
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import ModalAddPegawai from './ModalAddPenduduk';
 import EditPenduduk from './EditPenduduk';
 import ViewPenduduk from './ViewPenduduk';
+import { showEntriesOption } from '../constant';
 
 const { Search } = Input;
 
@@ -145,7 +145,7 @@ const PendudukTable = ({ allPenduduk }) => {
           Entries
         </div>
         <Search
-          placeholder="Cari Pegawai"
+          placeholder="Cari Penduduk"
           allowClear
           enterButton
           size="large"
@@ -160,12 +160,6 @@ const PendudukTable = ({ allPenduduk }) => {
         pagination={{
           pageSize: entryData
         }}
-      // scroll={{
-      //   x: 900,
-      // }}
-      // tableLayout='auto'
-      // scroll={{x: "100vw"}}
-      // style={{width: "100%  "}}
       />
 
       <ModalAddPegawai open={openModalAdd} setOpen={setOpenModalAdd} />

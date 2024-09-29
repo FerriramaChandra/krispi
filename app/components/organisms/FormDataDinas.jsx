@@ -1,10 +1,9 @@
 'use client';
 
-import Loading from '@/app/profil-dinas/loading';
 import { EditOutlined, SaveOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd'
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState, Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
 const FormDataDinas = ({ profile }) => {

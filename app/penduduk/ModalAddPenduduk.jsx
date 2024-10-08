@@ -330,9 +330,9 @@ const ModalAddPegawai = ({ open, setOpen }) => {
                   style={styles.formItemStyle}
                 >
                   <Select
-                    style={{
-                      width: 300,
-                    }}
+                    style={
+                      styles.inputStyle
+                    }
                     placeholder="-- Pilih Pekerjaan --"
                     options={pekerjaan.map((item) => ({
                       label: item,

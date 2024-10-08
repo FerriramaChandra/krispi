@@ -18,9 +18,9 @@ const Dashboard = async () => {
     <section id="dashboard">
       <TitleBar title={"Dashboard"} />
       <div className="flex items-center justify-between my-6 gap-4 flex-wrap w-full">
-        <DashboardInfo title={"Total Pegawai"} value={penduduk.length} icon={<FaUserTie size={50} />} />
-        <DashboardInfo title={"Total Jabatan"} value={2} icon={<PiToolboxFill size={60} />} />
-        <DashboardInfo title={"Total Kehadiran"} value={3} icon={<FaFileInvoice size={50} />} />
+        <DashboardInfo title={"Total data Penduduk"} value={penduduk.length} icon={<FaUserTie size={50} />} />
+        {/* <DashboardInfo title={"Total Jabatan"} value={2} icon={<PiToolboxFill size={60} />} />
+        <DashboardInfo title={"Total Kehadiran"} value={3} icon={<FaFileInvoice size={50} />} /> */}
       </div>
       <div className="bg-[#F9F9F9] p-8 text-center rounded-lg shadow-md shadow-gray-300">
         <div className="my-10">
